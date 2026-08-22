@@ -1,14 +1,11 @@
 {
-  "name": "my-project",
+  "name": "passgen",
   "version": "0.1.0",
   "private": true,
-  "main": "electron/main.cjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "electron:dev": "next build && electron .",
-    "dist": "next build && powershell -NoProfile -ExecutionPolicy Bypass -Command \"$stage='..\\PassGen-electron-app'; if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }; New-Item $stage -ItemType Directory | Out-Null; Copy-Item electron-app\\package.json $stage\\package.json; Copy-Item electron-app\\package-lock.json $stage\\package-lock.json; Copy-Item electron-app\\main.cjs $stage\\main.cjs; Copy-Item out $stage\\out -Recurse; corepack pnpm exec electron-builder --win portable --config.directories.app=$stage\""
+    "start": "next start"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -28,29 +25,9 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "electron": "^37.0.0",
-    "electron-builder": "^26.0.0",
     "postcss": "^8.5",
     "sharp": "^0.35.3",
     "tailwindcss": "^4.3.3",
     "typescript": "5.7.3"
-  },
-  "build": {
-    "appId": "ru.passgen.app",
-    "productName": "PassGen",
-    "asar": true,
-    "npmRebuild": false,
-    "nodeGypRebuild": false,
-    "files": [
-      "**/*"
-    ],
-    "win": {
-      "target": "portable"
-    }
-  },
-  "pnpm": {
-    "overrides": {
-      "hono": "4.12.25"
-    }
   }
 }
