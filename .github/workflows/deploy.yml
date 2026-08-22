@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: pnpm
 
       # Затем устанавливаем pnpm
       - name: Setup pnpm
